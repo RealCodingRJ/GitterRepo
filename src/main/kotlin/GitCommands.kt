@@ -11,9 +11,16 @@ fun main() {
 
     if (gitCommand == "/Init") {
 
+        println("Enter Cloned Github Repo Link: ");
+        val clonedLink = readln().toString();
+        copyRepoToPath(clonedLink);
+
+        println("Enter Route for Repo: ");
+        val route = readln().toString()
+        pickRouteCommand(route);
+
         println("Enter Command to Commit To Repo: ");
         val finalCommand = readln().toString()
-
         createProcess(finalCommand);
 
         val file = readln().toString()
@@ -32,6 +39,17 @@ fun main() {
     }
 
 }
+
+
+fun copyRepoToPath(repoLink: String) {
+    Runtime.getRuntime().exec("git clone $repoLink")
+}
+
+fun pickRouteCommand(route: String) {
+    Runtime.getRuntime().exec("cd /c $route");
+
+}
+
 
 fun pushData(cmd: String) {
     RunTimeProcess.GetProcess("git push -u origin $cmd");
