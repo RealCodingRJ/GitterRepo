@@ -13,6 +13,8 @@ fun main() {
     println("Enter Route: ")
     val gitCommand = readln().toString()
 
+
+
     if (gitCommand == "/Types") {
         println(getRoutes());
     }
@@ -42,6 +44,7 @@ fun main() {
         cmdEndingCommand = readln().toString()
         pushData(cmdEndingCommand);
 
+        createREADMEFile();
 
         val fileNamed = FileAppendedText.CreateFileAppended("Commands.txt");
         fileNamed.write("Commit Message: $finalCommand")
@@ -50,6 +53,12 @@ fun main() {
 
     }
 
+}
+
+fun createREADMEFile() {
+    val repoFile = File("README.md");
+    repoFile.createNewFile();
+    println("Created README File");
 }
 
 fun getRoutes() {
