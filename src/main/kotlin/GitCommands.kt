@@ -1,3 +1,5 @@
+import java.io.File
+import java.io.FileWriter
 
 fun main() {
 
@@ -8,7 +10,11 @@ fun main() {
     }
 
     if (gitCommand == "/Init") {
-        createProcess();
+
+        println("Enter Command to Commit To Repo: ");
+        val finalCommand = readln().toString()
+
+        createProcess(finalCommand);
 
         val file = readln().toString()
         getFile(file)
@@ -18,6 +24,11 @@ fun main() {
         pushData(cmdEndingCommand);
 
 
+        val fileNamed = FileAppendedText.CreateFileAppended("Commands.txt");
+        fileNamed.write("Commit Message: $finalCommand")
+        fileNamed.write("Pushed Branch: $cmdEndingCommand")
+        fileNamed.close();
+
     }
 
 }
@@ -26,9 +37,9 @@ fun pushData(cmd: String) {
     RunTimeProcess.GetProcess("git push -u origin $cmd");
 }
 
-fun createProcess() {
+fun createProcess(value: String) {
     RunTimeProcess.GetProcess("git add .");
-    RunTimeProcess.GetProcess("git commit");
+    RunTimeProcess.GetProcess("git commit -u $value");
 
 }
 
