@@ -1,7 +1,14 @@
 import java.io.File
 import java.io.FileWriter
 
+private var title = "a"
+private var file: String = "";
+private var cmdEndingCommand: String = "";
+private var listRoutes:List<String> = emptyList()
+
 fun main() {
+
+    println(title);
 
     println("Enter Route: ")
     val gitCommand = readln().toString()
@@ -28,11 +35,11 @@ fun main() {
         val finalCommand = readln().toString()
         createProcess(finalCommand);
 
-        val file = readln().toString()
+        file = readln().toString()
         getFile(file)
 
         println("Enter Push Branch: ");
-        val cmdEndingCommand = readln().toString()
+        cmdEndingCommand = readln().toString()
         pushData(cmdEndingCommand);
 
 
@@ -46,7 +53,7 @@ fun main() {
 }
 
 fun getRoutes() {
-    val listRoutes = listOf("/Init")
+    listRoutes = listOf("/Init")
     return listRoutes.forEach { e -> e }
 }
 
