@@ -3,7 +3,12 @@ import java.io.FileWriter
 
 fun main() {
 
+    println("Enter Route: ")
     val gitCommand = readln().toString()
+
+    if (gitCommand == "/Types") {
+        println(getRoutes());
+    }
 
     if (gitCommand.isEmpty()) {
         return;
@@ -40,6 +45,11 @@ fun main() {
 
 }
 
+fun getRoutes() {
+    val listRoutes = listOf("/Init")
+    return listRoutes.forEach { e -> e }
+}
+
 
 fun copyRepoToPath(repoLink: String) {
     Runtime.getRuntime().exec("git clone $repoLink")
@@ -47,9 +57,7 @@ fun copyRepoToPath(repoLink: String) {
 
 fun pickRouteCommand(route: String) {
     Runtime.getRuntime().exec("cd /c $route");
-
 }
-
 
 fun pushData(cmd: String) {
     RunTimeProcess.GetProcess("git push -u origin $cmd");
